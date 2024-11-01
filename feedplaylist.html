@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>अवधी राग-ए-तस्वीर</title>
+    <style>
+
+         @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Poppins:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: url('./assets/Feedback.png') no-repeat center center;
+            background-color: #1E2D63;
+            background-size: cover;
+            font-family: "Ek Mukta";
+            width: 834px;
+            height: 1194px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+        }
+
+        .top-header {
+            width: 644px;
+            position: absolute;
+            top: 108px;
+            left: 111px;
+        }
+
+        .back-button, .home-button {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+        }
+
+        .back-button {
+            top: 45px;
+            left: 45px;
+        }
+
+        .home-button {
+            top: 45px;
+            right: 45px;
+        }
+
+        .heart-container {
+            position: absolute;
+            width: 90px;
+            height: 90px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .heart-button {
+            width: 100%;
+            height: 100%;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .active {
+            content: url('assets/heart3.png');
+        }
+
+        .inactive {
+            content: url('assets/heart1.png');
+        }
+
+        .heart1 { top: 380px; left: 100px; }
+        .heart2 { top: 380px; left: 370px; }
+        .heart3 { top: 380px; left: 620px; }
+        .heart4 { top: 670px; left: 250px; }
+        .heart5 { top: 670px; left: 500px; }
+        .heart6 { top: 950px; left: 100px; }
+        .heart7 { top: 950px; left: 370px; }
+        .heart8 { top: 950px; left: 620px; }
+
+        .done-btn {
+            position: absolute;
+            bottom: 45px;
+            padding: 8px 12px;
+            width: 300px;
+            border: none;
+            border-radius: 40px;
+            background-color: rgba(255, 255, 255, 0.73);
+            cursor: pointer;
+            color: #273774;
+            text-align: center;
+            font-family: "Ek Mukta", sans-serif;
+            font-size: 30px;
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+</head>
+<body>
+    <a href="carousel.html">
+        <img src="assets/back.png" alt="Back Button" class="back-button">
+    </a>    
+
+    <div class="top-header">
+        <img src="assets/hh3.png" alt="heading">
+    </div>
+
+    <a href="index.html">
+        <img src="assets/homebutton.png" alt="Home Button" class="home-button">
+    </a>
+
+    <!-- Heart Containers -->
+    <div class="heart-container heart1" onclick="toggleHeart(this)">
+        <img src="assets/heart1.png" alt="Heart Button" class="heart-button inactive">
+    </div>
+    <div class="heart-container heart2" onclick="toggleHeart(this)">
+        <img src="assets/heart1.png" alt="Heart Button" class="heart-button inactive">
+    </div>
+    <div class="heart-container heart3" onclick="toggleHeart(this)">
+        <img src="assets/heart1.png" alt="Heart Button" class="heart-button inactive">
+    </div>
+    <div class="heart-container heart4" onclick="toggleHeart(this)">
+        <img src="assets/heart1.png" alt="Heart Button" class="heart-button inactive">
+    </div>
+    <div class="heart-container heart5" onclick="toggleHeart(this)">
+        <img src="assets/heart1.png" alt="Heart Button" class="heart-button inactive">
+    </div>
+    <div class="heart-container heart6" onclick="toggleHeart(this)">
+        <img src="assets/heart1.png" alt="Heart Button" class="heart-button inactive">
+    </div>
+    <div class="heart-container heart7" onclick="toggleHeart(this)">
+        <img src="assets/heart1.png" alt="Heart Button" class="heart-button inactive">
+    </div>
+    <div class="heart-container heart8" onclick="toggleHeart(this)">
+        <img src="assets/heart1.png" alt="Heart Button" class="heart-button inactive">
+    </div>
+
+    <button class="done-btn">
+    <a href="photo.html">
+        आगे बढ़ें →
+    </a>
+    </button>
+
+    <script>
+        function toggleHeart(heartContainer) {
+            const heartImg = heartContainer.querySelector('.heart-button');
+
+            // Toggle between active and inactive states
+            if (heartImg.classList.contains('inactive')) {
+                heartImg.classList.remove('inactive');
+                heartImg.classList.add('active');
+            } else {
+                heartImg.classList.remove('active');
+                heartImg.classList.add('inactive');
+            }
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

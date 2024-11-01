@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>अवधी राग-ए-तस्वीर</title>
+    <style>
+         
+         @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Poppins:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #273774;
+            font-family: "Ek Mukta";
+            width: 834px;
+            height: 1194px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            color: white;
+        }
+
+        .top-header {
+            width: 574px;
+            position: absolute;
+            top: 47.9px;
+            right: 129px;
+        }
+
+        .home-button {
+            position: absolute;
+            top: 45px;
+            right: 45px;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+        }
+
+        .carousel-container {
+            margin-top: 142px;
+            margin-left: 24px;
+            box-sizing: border-box;
+            width: 770px;
+            height: 900px;
+            border-radius: 14px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            margin-bottom: 30px;
+        }
+
+        .dots {
+            margin-top: 17px;
+            margin-left: 240px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .dot {
+            width: 15px;
+            height: 15px;
+            background-color: #ffffff60;
+            border-radius: 50%;
+        }
+
+        .dot.active {
+            background-color: white;
+            width: 30px;
+            height: 30px;
+            margin-top: -7px;
+        }
+
+        .song-info {
+            margin-top: 40px;
+            margin-left: 49px;
+            width: 640px;
+            height: 233.641px;
+        }
+
+        .video-slide {
+            position: absolute;
+            top: 235px;
+            left: 68px;
+            width: 643px;
+            height: 482px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #video_placeholder {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        .heart-container {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            top: 42%;
+            left: 45%;
+        }
+
+        #heart-button {
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        #heart-button.animate {
+            animation: heart-animation 0.6s steps(2) forwards;
+        }
+
+        @keyframes heart-animation {
+            0% { content: url('assets/heart1.png'); }
+            100% { content: url('assets/heart3.png'); }
+        }
+
+        .next-btn, .prev-btn {
+            position: absolute;
+            width: 135px;
+            height: 170px;
+            flex-shrink: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            display: none;
+        }
+
+        .next-btn img, .prev-btn img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .next-btn {
+            position: absolute;
+            right: 0px;
+            margin-right: -30px;
+        }
+
+        .prev-btn {
+            position: absolute;
+            left: 0px;
+            margin-left: -28px;
+        }
+
+        .final-select {
+            position: absolute;
+            top: 1076px;
+            left: 281px;
+            padding: 8px 12px;
+            width: 272px;
+            height: 65px;
+            flex-shrink: 0;
+            border: none;
+            border-radius: 40px;
+            background-color: rgba(255, 255, 255, 0.73);
+            cursor: pointer;
+            color: #273774;
+            text-align: center;
+            font-family: "Ek Mukta";
+            font-size: 32px;
+            font-weight: 600;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            }
+
+    </style>
+    
+</head>
+
+<body>
+
+    <div class="top-header">
+        <img src="assets/hh2.png" alt="Heading">
+    </div>
+
+    <a href="index.html">
+        <img src="assets/homebutton.png" alt="Home Button" class="home-button">
+    </a>
+
+    <div class="carousel-container">
+        <div class="dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+
+        <div class="song-info">
+            <img src="assets/f1.png" alt="Title" id="title_info">
+        </div>
+
+        <div class="video-slide" id="video">
+            <video id="video_placeholder" src="./assets/v1.mp4" loop ></video>
+        </div>
+
+        <div class="heart-container">
+            <img id="heart-button" src="./assets/heart1.png" alt="Heart Button" />
+        </div>
+
+        <button class="prev-btn" id="prev-btn">
+            <img src="./assets/prevbtn.png" alt="Previous">
+        </button>
+
+        <button class="next-btn" id="next-btn">
+            <img src="./assets/nextbtn.png" alt="Next">
+        </button>
+
+    </div>
+
+    <div class="final-select">
+    <a href="feedplaylist.html">
+        सभी गानें चुन लिए ✓
+    </a>
+    </div>
+
+   
+
+    <script>
+        const videos = [
+            { videoSrc: './assets/v1.mp4', titleSrc: 'assets/f1.png', bgColor: 'url(./assets/b1.png)' },
+            { videoSrc: './assets/v2.mp4', titleSrc: 'assets/f2.png', bgColor: 'url(./assets/b2.png)' },
+            { videoSrc: './assets/v3.mp4', titleSrc: 'assets/f3.png', bgColor: 'url(./assets/b3.png)' },
+            { videoSrc: './assets/v4.mp4', titleSrc: 'assets/f4.png', bgColor: 'url(./assets/b4.png)' },
+            { videoSrc: './assets/v5.mp4', titleSrc: 'assets/f5.png', bgColor: 'url(./assets/b5.png)' },
+            { videoSrc: './assets/v6.mp4', titleSrc: 'assets/f6.png', bgColor: 'url(./assets/b6.png)' },
+            { videoSrc: './assets/v7.mp4', titleSrc: 'assets/f7.png', bgColor: 'url(./assets/b7.png)' },
+            { videoSrc: './assets/v8.mp4', titleSrc: 'assets/f8.png', bgColor: 'url(./assets/b8.png)' }
+        ];
+    
+        let currentIndex = 0;
+        
+        // Retrieve the heartStatus array from localStorage or initialize it
+        const heartStatus = JSON.parse(localStorage.getItem('heartStatus')) || Array(videos.length).fill(false);
+    
+        const videoPlaceholder = document.getElementById('video_placeholder');
+        const titleInfo = document.getElementById('title_info');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const carouselContainer = document.querySelector('.carousel-container');
+        const heartButton = document.getElementById('heart-button');
+    
+        function updateCarousel(index) {
+            videoPlaceholder.src = videos[index].videoSrc;
+            titleInfo.src = videos[index].titleSrc;
+            carouselContainer.style.backgroundImage = videos[index].bgColor;
+    
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === index);
+            });
+    
+            prevBtn.style.display = index === 0 ? 'none' : 'block';
+            nextBtn.style.display = index === videos.length - 1 ? 'none' : 'block';
+    
+            updateHeartButton(index);
+        }
+    
+        function updateHeartButton(index) {
+            const isClicked = heartStatus[index];
+            heartButton.src = isClicked ? 'assets/heart3.png' : 'assets/heart1.png';
+        }
+    
+        heartButton.addEventListener('click', () => {
+            // Toggle the heart status
+            heartStatus[currentIndex] = !heartStatus[currentIndex];
+            // Update the heart icon and localStorage
+            updateHeartButton(currentIndex);
+            localStorage.setItem('heartStatus', JSON.stringify(heartStatus));
+        });
+    
+        nextBtn.addEventListener('click', () => {
+            if (currentIndex < videos.length - 1) {
+                currentIndex++;
+                updateCarousel(currentIndex);
+            }
+        });
+    
+        prevBtn.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCarousel(currentIndex);
+            }
+        });
+    
+        // Initialize carousel with the first item
+        updateCarousel(currentIndex);
+    </script>
+
+</body>
+</html>
