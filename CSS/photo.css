@@ -1,0 +1,143 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    background: url('./Blur.png') no-repeat center center;
+    background-size: cover;
+    font-family: "Ek Mukta", sans-serif;
+    width: 834px;
+    height: 1194px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+
+.back-button, .home-button {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+
+
+.back-button {
+    top: 45px;
+    left: 45px;
+}
+
+
+.home-button {
+    top: 45px;
+    right: 45px;
+}
+
+
+.hidden {
+    display: none;
+}
+
+
+.photoheading-center {
+    transition: all 1s ease-in-out;  
+    position: relative;
+    transform: translateY(0); 
+}
+
+
+.photoheading-top {
+    width: 644px;
+    position: absolute;
+    top: 128px;  
+    left: 95px;
+}
+
+
+.photoheading-transition {
+    transform: translateY(-50px);  
+}
+
+
+#photoframe {
+    position: relative;
+    margin-top: 90px;
+}
+
+
+.photo-frame {
+    width: 704px;
+    height: 704px;
+    flex-shrink: 0;
+}
+
+
+.camera-container {
+    position: absolute;
+    top: 7.5%;
+    left: 7.5%;
+    flex-shrink: 0;
+    width: 600px;
+    height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#webcam, #captured-photo {
+    max-width: 100%;
+    max-height: 100%;  
+}
+
+
+#clickins{
+    color: #FFF;
+    text-align: center;
+    text-shadow: 0px 3.565px 3.565px rgba(0, 0, 0, 0.25);
+    font-family: "Ek Mukta";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: 10px;
+}
+
+
+button {
+    margin-top: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    height: 150px;
+    width: 150px;
+}
+
+
+button img{
+    height: 100%;
+    width: 100%;
+}
+
+
+#clickcomd{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 150px;
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}

@@ -1,0 +1,56 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Ek Mukta";
+}
+
+.container {
+    width: 834px;
+    height: 1194px;
+    background-image: url('bgfaded.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.home-button {
+    position: absolute;
+    top: 45px;
+    right: 45px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+
+.hh {
+    width: 789.811px;
+    position: absolute;
+    top: 469px;
+    left: 23px;
+}
+
+.tap-gif {
+    position: absolute;
+    top: 481px;
+    left: 204px;
+    width: 480px;
+    height: 500px;
+    transform: rotate(3.5deg);
+    flex-shrink: 0;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out 1s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: none; 
+  }

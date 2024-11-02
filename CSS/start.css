@@ -1,0 +1,103 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Ek Mukta";
+    width: 834px;
+    height: 1194px;
+    position: relative;
+    background: url('bgfaded.png') no-repeat center center;
+    background-size: cover;
+}
+
+
+.home-button {
+    position: absolute;
+    top: 45px;
+    right: 45px;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+
+.content-group {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+
+.content-group img {
+    width: 204.522px;
+    height: 178px;
+}
+
+
+#group1 {
+    position: absolute;
+    top: 483px;
+    left: 70px;
+    animation: fadeIn 0.8s ease-in-out 0.5s forwards;
+}
+
+#group2 {
+    position: absolute;
+    top: 483px;
+    right: 315px;
+    animation: fadeIn 0.8s ease-in-out 1.3s forwards;
+}
+
+#group3 {
+    position: absolute;
+    top: 483px;
+    right: 70px;
+    animation: fadeIn 0.8s ease-in-out 2.1s forwards;
+}
+
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+button {
+    position: absolute;
+    top: 738px;
+    left: 320px;
+    padding: 4px 6px;
+    bottom: 391px;
+    width: 212.245px;
+    height: 65px;
+    border: none;
+    border-radius: 40px;
+    background-color: rgba(255, 255, 255, 0.73);
+    cursor: not-allowed;
+    opacity: 0.5;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    color: #273774;
+    text-align: center;
+    font-family: "Ek Mukta";
+    font-size: 32px;
+    font-weight: 600;
+    justify-content: center;
+}
+
+button:hover {
+    background-color: #c1c5cb;
+}
+
+ button.enabled {
+    cursor: pointer;
+    opacity: 1;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+

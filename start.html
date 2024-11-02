@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>अवधी राग-ए-तस्वीर</title>
+    <link rel="stylesheet" href="./CSS/start.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Poppins:wght@400;700&display=swap');
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <a href="index.html" class="home-button">
+            <img src="./assets/homebutton.png" alt="Home">
+        </a>
+
+       </div class="groups" >
+
+            <div id="group1" class="content-group" >
+                <img src="assets/group1.png" alt="Group 1 Image">
+            </div>
+
+            <div id="group2" class="content-group">
+                <img src="assets/group2.png" alt="Group 2 Image">
+            </div>
+
+            <div class="content-group" id="group3">
+                <img src="assets/group3.png" alt="Group 3 Image">
+            </div>
+
+        </div>
+        
+        <button id="okButton" disabled>  <a href="tap.html" >  ठीक है → </a> </button>
+    
+    </div>
+
+    <script>
+        const okButton = document.getElementById('okButton');
+
+        const totalAnimationDuration = 2100 + 800; // 2.1s + 0.8s animation time
+
+        okButton.disabled = true;
+
+        setTimeout(() => {
+            okButton.disabled = false;
+            okButton.classList.add('enabled');
+            okButton.style.cursor = 'pointer';
+        }, totalAnimationDuration);
+    </script>
+
+</body>
+</html> 

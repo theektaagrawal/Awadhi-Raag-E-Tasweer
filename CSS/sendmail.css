@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Ek Mukta";
+}
+
+.container {
+    width: 834px;
+    height: 1194px;
+    background-image: url('fb1.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.home-button {
+    position: absolute;
+    fill: rgba(255, 255, 255);
+    top: 45px;
+    right: 45px;
+    width: 60px;
+    height: 60px;
+}
+
+h1 {
+    position: absolute;
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 49.627px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    top: 282px;
+    left: 85px;
+}
+
+#loading_gif{
+    width: 200px;
+    height: 200px;
+    flex-shrink: 0;
+    position: absolute;
+    top: 374px;
+    left: 310px;
+    mix-blend-mode: multiply;    
+}
+
+#sendingphoto{
+    display: flex;
+    width: 678.93px;
+    height: 486.924px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    position: absolute;
+    top: 551px;
+    left: 111px;
+    mix-blend-mode: multiply;
+}
