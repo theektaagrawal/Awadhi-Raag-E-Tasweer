@@ -4,16 +4,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Enable or disable the submit button based on input
   nameInput.addEventListener('input', () => {
-      submitBtn.disabled = nameInput.value.trim() === '';
+    submitBtn.disabled = nameInput.value.trim() === '';
   });
 
   // Save the name to localStorage and redirect when the button is clicked
   submitBtn.addEventListener('click', () => {
-      const userName = nameInput.value.trim();
-      if (userName) {
-          localStorage.setItem('userName', userName);
-          window.location.href = 'start.html';
-      }
+    const userName = nameInput.value.trim();
+    if (userName) {
+      localStorage.setItem('userName', userName);
+      window.location.href = 'start.html';
+    }
   });
 });
 
@@ -24,65 +24,67 @@ const heartStatus = JSON.parse(localStorage.getItem('heartStatus')) || Array(8).
 
 // Save heart status to localStorage
 function saveHeartStatus() {
-    localStorage.setItem('heartStatus', JSON.stringify(heartStatus));
+  localStorage.setItem('heartStatus', JSON.stringify(heartStatus));
+  //saving in backend too
+  saveUserPlaylist()
 }
 
 // Update heart button on Carousel page
 function updateHeartButtonCarousel(index) {
-    const heartButton = document.getElementById('heart-button');
-    heartButton.src = heartStatus[index] ? 'assets/heart3.png' : 'assets/heart1.png';
+  const heartButton = document.getElementById('heart-button');
+  heartButton.src = heartStatus[index] ? 'assets/heart3.png' : 'assets/heart1.png';
 }
 
 // Update heart buttons on Feed Playlist page
 function updateHeartButtonsFeed() {
-    const heartContainers = document.querySelectorAll('.heart-container');
-    heartContainers.forEach((container, index) => {
-        const heartImg = container.querySelector('.heart-button');
-        heartImg.classList.toggle('active', heartStatus[index]);
-        heartImg.classList.toggle('inactive', !heartStatus[index]);
-    });
+  const heartContainers = document.querySelectorAll('.heart-container');
+  heartContainers.forEach((container, index) => {
+    const heartImg = container.querySelector('.heart-button');
+    heartImg.classList.toggle('active', heartStatus[index]);
+    heartImg.classList.toggle('inactive', !heartStatus[index]);
+  });
 }
 
 // Carousel page functionality
 function initializeCarousel() {
-    const heartButton = document.getElementById('heart-button');
-    heartButton.addEventListener('click', () => {
-        heartStatus[currentIndex] = !heartStatus[currentIndex];
-        updateHeartButtonCarousel(currentIndex);
-        saveHeartStatus();
-    });
+  const heartButton = document.getElementById('heart-button');
+  heartButton.addEventListener('click', () => {
+    heartStatus[currentIndex] = !heartStatus[currentIndex];
+    updateHeartButtonCarousel(currentIndex);
+    saveHeartStatus();
+  });
 
-    updateHeartButtonCarousel(currentIndex); // Initial update
+  updateHeartButtonCarousel(currentIndex); // Initial update
 }
 
 // Feed Playlist page functionality
 function initializeFeedPlaylist() {
-    const heartContainers = document.querySelectorAll('.heart-container');
-    heartContainers.forEach((container, index) => {
-        container.addEventListener('click', () => {
-            heartStatus[index] = !heartStatus[index];
-            saveHeartStatus();
-            updateHeartButtonsFeed();
-        });
+  const heartContainers = document.querySelectorAll('.heart-container');
+  heartContainers.forEach((container, index) => {
+    container.addEventListener('click', () => {
+      heartStatus[index] = !heartStatus[index];
+      saveHeartStatus();
+      updateHeartButtonsFeed();
     });
+  });
 
-    updateHeartButtonsFeed(); // Initial update
+  updateHeartButtonsFeed(); // Initial update
 }
 
 // Detect which page is loaded and initialize accordingly
 document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('heart-button')) {
-        initializeCarousel(); // Initialize Carousel page
-    } else if (document.querySelectorAll('.heart-container').length > 0) {
-        initializeFeedPlaylist(); // Initialize Feed Playlist page
-    }
+  if (document.getElementById('heart-button')) {
+    initializeCarousel(); // Initialize Carousel page
+  } else if (document.querySelectorAll('.heart-container').length > 0) {
+    initializeFeedPlaylist(); // Initialize Feed Playlist page
+  }
 });
 
 
 
 
 //Photo.html javascript code
-  document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
   const heading = document.getElementById('photoheading');
   const cameraFrame = document.getElementById('camera-frame');
   const webcam = document.getElementById('webcam');
@@ -168,6 +170,33 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+// Function to save the user's playlist
+function saveUserPlaylist() {
+  const userId = localStorage.getItem('userId') || 'defaultUser'; // Use localStorage to get the user ID
+  const heartStatus = JSON.parse(localStorage.getItem('heartStatus')) || [];
+
+  // Create the playlist object to send to the server
+  const playlistData = {
+    userId: userId,
+    playlist: heartStatus
+  };
+
+  // Send a POST request to the server
+  fetch('/save-playlist', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(playlistData)
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data.message); // Log the success message from the server
+    })
+    .catch((error) => {
+      console.error('Error saving playlist:', error);
+    });
+}
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -176,23 +205,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Email validation function using regex
   function isValidEmail(email) {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return emailRegex.test(email);
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
   }
 
   // Enable or disable the submit button based on valid email input
   emailInput.addEventListener('input', () => {
-      const email = emailInput.value.trim();
-      submitButton.disabled = !isValidEmail(email);
+    const email = emailInput.value.trim();
+    submitButton.disabled = !isValidEmail(email);
   });
 
   // Save the email to localStorage and redirect when the button is clicked
   submitButton.addEventListener('click', () => {
-      const userMail = emailInput.value.trim();
-      if (isValidEmail(userMail)) {
-          localStorage.setItem('userMail', userMail);
-          window.location.href = 'sendmail.html';
-      }
+    const userMail = emailInput.value.trim();
+    if (isValidEmail(userMail)) {
+      localStorage.setItem('userMail', userMail);
+      window.location.href = 'sendmail.html';
+    }
   });
 });
 
@@ -245,41 +274,67 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.addEventListener('DOMContentLoaded', () => {
     const videos = [
-        "https://www.youtube.com/embed/jY8mAWdQFOA",
-        "https://www.youtube.com/embed/D61BvxAOxm0",
-        "https://www.youtube.com/embed/AETFvQonfV8",
-        "https://www.youtube.com/embed/6kgiD0NDQu8",
-        "https://www.youtube.com/embed/IptC7oeTNkE",
-        "https://www.youtube.com/embed/aUNx5YQuX-Y",
-        "https://www.youtube.com/embed/87FYp3YLEBM",
-        "https://www.youtube.com/embed/1_WaSnOnu1Q"
+      "https://www.youtube.com/embed/jY8mAWdQFOA",
+      "https://www.youtube.com/embed/D61BvxAOxm0",
+      "https://www.youtube.com/embed/AETFvQonfV8",
+      "https://www.youtube.com/embed/6kgiD0NDQu8",
+      "https://www.youtube.com/embed/IptC7oeTNkE",
+      "https://www.youtube.com/embed/aUNx5YQuX-Y",
+      "https://www.youtube.com/embed/87FYp3YLEBM",
+      "https://www.youtube.com/embed/1_WaSnOnu1Q"
     ];
 
     const heartStatus = JSON.parse(localStorage.getItem('heartStatus')) || Array(videos.length).fill(false);
     const playlistContainer = document.getElementById('playlist-container');
 
     videos.forEach((videoUrl, index) => {
-        if (heartStatus[index]) {
-            const iframe = document.createElement('iframe');
-            iframe.width = "560";
-            iframe.height = "315";
-            iframe.src = videoUrl;
-            iframe.title = "YouTube video player";
-            iframe.frameBorder = "0";
-            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-            iframe.referrerPolicy = "strict-origin-when-cross-origin";
-            iframe.allowFullscreen = true;
+      if (heartStatus[index]) {
+        const iframe = document.createElement('iframe');
+        iframe.width = "560";
+        iframe.height = "315";
+        iframe.src = videoUrl;
+        iframe.title = "YouTube video player";
+        iframe.frameBorder = "0";
+        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+        iframe.referrerPolicy = "strict-origin-when-cross-origin";
+        iframe.allowFullscreen = true;
 
-            playlistContainer.appendChild(iframe);
-        }
+        playlistContainer.appendChild(iframe);
+      }
     });
-});
-  
+  });
+
   // Fetch the user photo from localStorage and display it
   const userImg = localStorage.getItem('userImg');
   if (userImg) {
-      document.getElementById('user-photo').src = userImg;
+    document.getElementById('user-photo').src = userImg;
   }
+
+  // Function to save the user's playlist
+  const savePlaylist = () => {
+    const userId = localStorage.getItem('userId') || 'defaultUserId'; // Replace with the actual user ID logic
+    const playlist = videos.filter((_, index) => heartStatus[index]); // Create playlist based on heart status
+
+    fetch('/save-playlist', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ userId, playlist })
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+        alert(data.message); // Show success message
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        alert('Failed to save playlist.');
+      });
+  };
+
+  // Call savePlaylist function when needed, for example, on a button click
+  document.getElementById('save-button').addEventListener('click', savePlaylist);
 });
 
 
