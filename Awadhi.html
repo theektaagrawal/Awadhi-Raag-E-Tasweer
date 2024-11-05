@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code and URL Display</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <!-- QR Code Image Element -->
+    <a href="option.html">
+        <img id="qr-code" alt="User QR Code" style="width: 200px; height: 200px;">
+    </a>
+
+    <img id="userImage" alt="User Image" >
+
+    <img id="mailImg" alt="User mail attachment" style="width: 400px; height: 400px;" >
+
+   
+    <script>
+       
+       const userURL = localStorage.getItem('userUrl');
+
+        // Select the QR code image element and URL display element
+        const qrCodeImage = document.getElementById('qr-code');
+
+        // Retrieve QR code image and URL data from local storage
+        const userQrCode = localStorage.getItem('userQr');
+
+        // Display QR code image if it exists in local storage
+        if (userQrCode) {
+            qrCodeImage.src = userQrCode;
+            qrCodeImage.style.display = 'block'; // Make QR code visible
+        }
+
+        // Retrieve the user image from local storage
+const userImgDataUrl = localStorage.getItem('userImg');
+
+// Check if the image data exists in local storage
+if (userImgDataUrl) {
+    // Set the src attribute of the img element
+    document.getElementById('userImage').src = userImgDataUrl;
+} else {
+    console.log("No user image found in local storage.");
+}
+
+
+// Retrieve the mail image from local storage
+const mailImgDataUrl = localStorage.getItem('imgMail');
+
+// Check if the image data exists in local storage
+if (mailImgDataUrl) {
+    // Set the src attribute of the img element
+    document.getElementById('mailImg').src = mailImgDataUrl;
+} else {
+    console.log("No mail image found in local storage.");
+}
+
+    </script>
+</body>
+</html>

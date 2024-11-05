@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Mukta";
 }
 
 .container {
@@ -40,7 +41,7 @@ h1 {
     color: #FFF;
     text-align: center;
     text-shadow: 0px 4.906px 4.906px rgba(0, 0, 0, 0.25);
-    font-family: "Ek Mukta";
+    font-family: "Mukta";
     font-size: 39.324px;
     font-style: normal;
     font-weight: 700;
@@ -58,7 +59,7 @@ input {
     border: 1.991px solid #000;
     background: #FFF;
     color: #000;
-    font-family: "Ek Mukta";
+    font-family: "Mukta";
     font-size: 40px;
     font-style: normal;
     font-weight: 400;
@@ -85,7 +86,7 @@ input {
     margin-top: 1px; 
     color: #273774;
     text-align: center;
-    font-family: "Ek Mukta";
+    font-family: "Mukta";
     font-size: 32px;
     font-style: normal;
     font-weight: 600;

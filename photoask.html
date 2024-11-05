@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>अवधी राग-ए-तस्वीर</title>
+    <link rel="stylesheet" href="./CSS/photoask.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Poppins:wght@400;700&display=swap');
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+   
+    <a href="feedplaylist.html">
+        <img src="assets/back.png" alt="Back Button" class="back-button">
+    </a>    
+
+
+    <div class="photoheading">
+        <img id="photoheading" src="./assets/hh5.png" class="photo">
+    </div>
+
+  
+    <a href="index.html">
+        <img src="assets/homebutton.png" alt="Home Button" class="home-button">
+    </a>
+
+    <button id="getready" disabled>  
+        <a href="photo.html" >  
+            ठीक है → 
+        </a> 
+    </button>
+    
+
+    <script>
+
+        const okButton = document.getElementById('getready');
+
+        const totalAnimationDuration = 1000;
+
+        okButton.disabled = true;
+
+        setTimeout(() => {
+            okButton.disabled = false;
+            okButton.classList.add('enabled');
+            okButton.style.cursor = 'pointer';
+        }, totalAnimationDuration);
+
+        const theuserURL = localStorage.getItem('userUrl');
+
+        // Generate QR Code
+        function generateQRCode(url) {
+            const tempDiv = document.createElement('div');
+            tempDiv.style.display = 'none';
+            document.body.appendChild(tempDiv);
+
+            const qrCode = new QRCode(tempDiv, {
+                text: url,
+                width: 128,
+                height: 128,
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            setTimeout(() => {
+                const qrCanvas = tempDiv.querySelector('canvas');
+                if (qrCanvas) {
+                    const qrDataUrl = qrCanvas.toDataURL('image/png');
+                    localStorage.setItem('userQr', qrDataUrl);
+                    console.log('QR code saved in local storage as userQr:', qrDataUrl);
+                }
+                document.body.removeChild(tempDiv);
+            }, 1000);
+        }
+
+        // Generate the QR Code using the constructed URL
+        generateQRCode(theuserURL.toString());
+
+    </script>
+
+</body>
+</html> 

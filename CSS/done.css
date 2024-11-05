@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Ek Mukta";
+    font-family: "Mukta";
 }
 
 .container {
@@ -63,5 +63,7 @@ body {
     left: 285px;
     background: transparent;
     border: none;
+    opacity: 0.5; /* Reduces opacity to give a "disabled" look */
+    cursor: not-allowed; /* Changes cursor to indicate it's non-clickable */
 }
 

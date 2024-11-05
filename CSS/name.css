@@ -2,7 +2,7 @@ body, html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Ek Mukta";
+    font-family: "Mukta";
 }
 
 .container {
@@ -34,10 +34,10 @@ h1 {
     color: #FFF;
     text-align: center;
     text-shadow: 0px 4.906px 4.906px rgba(0, 0, 0, 0.25);
-    font-family: "Ek Mukta";
+    font-family: "Mukta";
     font-size: 39.324px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 700;
     line-height: normal;
     width: 789.811px;
     top: 438px;
@@ -52,7 +52,7 @@ input {
     border: 1.991px solid #000;
     background: #FFF;
     color: #000;
-    font-family: "Ek Mukta";
+    font-family: "Mukta";
     font-size: 40px;
     font-style: normal;
     font-weight: 400;
@@ -79,7 +79,7 @@ button {
     margin-top: 1px; 
     color: #273774;
     text-align: center;
-    font-family: "Ek Mukta";
+    font-family: "Mukta";
     font-size: 32px;
     font-style: normal;
     font-weight: 600;
@@ -89,15 +89,12 @@ button {
 }
 
 
-#submitButton:disabled {
+#submitBtn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
-    background-color: #a5a5a5;
+    background-color: #a5a5a5d0;
 }
 
-button:hover {
-    background-color: #c1c5cb;
-}
 
 a {
     text-decoration: none; 

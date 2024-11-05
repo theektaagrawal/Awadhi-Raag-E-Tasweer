@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Ek Mukta";
+    font-family: "Mukta";
 }
 
 .container {
@@ -28,7 +28,6 @@ h1 {
     position: absolute;
     color: #000;
     text-align: center;
-    font-family: Inter;
     font-size: 49.627px;
     font-style: normal;
     font-weight: 400;
@@ -38,12 +37,12 @@ h1 {
 }
 
 #loading_gif{
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     flex-shrink: 0;
     position: absolute;
-    top: 374px;
-    left: 310px;
+    top: 394px;
+    left: 320px;
     mix-blend-mode: multiply;    
 }
 

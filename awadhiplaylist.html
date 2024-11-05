@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>अवधी राग-ए-तस्वीर</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap">
     <link rel="stylesheet" href="./CSS/awadhiplaylist.css">
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Poppins:wght@400;700&display=swap');
-    </style>
+    
 </head>
 <body>
     <div class="header">
@@ -21,19 +20,73 @@
 
     <div class="surprise-playlist">
         <h3>Surprise Playlist</h3>
-        <a href="https://www.youtube.com/playlist?list=PLdal8ragvc9WtdLUyDyKb5DCQdSLBl0MT">
+        <a href="https://www.youtube.com/playlist?list=PLdal8ragvc9WtdLUyDyKb5DCQdSLBl0MT" target="_blank" rel="noopener noreferrer">
             <img src="assets/Surprisesongs.png" alt="Surprise Playlist">
         </a>
-        
     </div>
 
     <div class="knowledge-playlist">
         <h3>अवधी को जानें!</h3>
-        <h4>अवधी भारत-नेपाल के अलावा विदेश में भी बोली जाती है, जैसे कि सूरीनाम, गुयाना आदि। कारण ये रहा कि 19वी सदी में अंग्रेजों ने अवध से लोगों को मज़दूर बनने के लिए इन देशों में भेजा था। तब से वे अपनी संस्कृति और भाषा को संजो के रखे हैं।</h4>
-        <h5>अवीडियो यहाँ देखें : </h5>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/0uhossX4UXs?si=eISHiSfYX-YPkLII" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <h4 id ="m1">अवधी भारत-नेपाल के अलावा विदेश में भी बोली जाती है, जैसे कि सूरीनाम, गुयाना आदि। कारण ये रहा कि 19वीं सदी में अंग्रेजों ने अवध से लोगों को मज़दूर बनने के लिए इन देशों में भेजा था। तब से वे अपनी संस्कृति और भाषा को संजो के रखे हैं।</h4>
+        <h4 id="m2">वीडियो यहाँ देखें:</h4>
+        <iframe src="https://www.youtube.com/embed/0uhossX4UXs?si=eISHiSfYX-YPkLII" title="YouTube video player" allowfullscreen></iframe>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+  
+    // Define the videos array outside the DOMContentLoaded event
+    const videos = [
+      { title: "होरी खेले रघुवीरा | ‘बाग़बान’ | टी सीरीज़", thumbnail: "./assets/T1.png", url: "https://youtu.be/87FYp3YLEBM?si=8g41NwMtlEdmVYBL" },
+      { title: "कौन दिशा में लेके चला रे बटोहिया | नदिया के पार | हेमलता, जसपाल सिंह", thumbnail: "./assets/T2.png", url: "https://youtu.be/D61BvxAOxm0?si=GqPtcdUnGRCEWzeM" },
+      { title: "रंगी सारी | कनिष्क सेठ और कविता सेठ", thumbnail: "./assets/T3.png", url: "https://youtu.be/jY8mAWdQFOA?si=8hKg1jr5M5M32Mlb" },
+      { title: "श्री हनुमान चालीसा | गुलशन कुमार, हरिहरन | टी सीरीज़", thumbnail: "./assets/T4.png", url: "https://youtu.be/AETFvQonfV8?si=ey4QdFAQEDA6aTDP" },
+      { title: "कौन ठगवा नगरीया लूटल हो | ‘कबीर भजन’ | मैथिली ठाकुर", thumbnail: "./assets/T5.png", url: "https://youtu.be/6kgiD0NDQu8?si=Ef3p-I-7k_4IGxDO" },
+      { title: "कबीर दोहे | ज़ुबिन नौटियाल | टी सीरीज़", thumbnail: "./assets/T6.png", url: "https://youtu.be/IptC7oeTNkE?si=sPCIcpOkbKhGdKEa" },
+      { title: "सावन का महीना, पवन करे शोर | मिलन | मुकेश, लता मंगेशकर", thumbnail: "./assets/T7.png", url: "https://youtu.be/aUNx5YQuX-Y?si=aYFAgtuFbjdD8otz" },
+      { title: "फेरो न नजरिया | ‘कला’ - कविता सेठ - कनिष्क सेठ | सोनी म्यूजिक", thumbnail: "./assets/T8.png", url: "https://youtu.be/1_WaSnOnu1Q?si=E2QMc8IX4cnpjE8j" }
+    ];
+
+
+    // Function to get URL parameters
+    function getUrlParameter(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+    }
+
+    // Retrieve userName and heartStatus from URL parameters
+    const Name = getUrlParameter('UserName') || 'आप';
+    const Status = JSON.parse(decodeURIComponent(getUrlParameter('HeartStatus'))) || Array(videos.length).fill(false);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Update the heading with the user's name
+      document.getElementById('playlist-heading').textContent = `${Name} की अवधी प्लेलिस्ट`;
+
+      // Generate the playlist based on heartStatus
+      const playlistContainer = document.getElementById('playlist-container');
+      playlistContainer.innerHTML = ''; // Clear previous content if any
+      videos.forEach((video, index) => {
+        if (Status[index]) {
+          const videoContainer = document.createElement('div');
+          videoContainer.className = 'video-item';
+          videoContainer.style.cursor = 'pointer';
+          videoContainer.addEventListener('click', () => window.open(video.url, '_blank'));
+
+          const img = document.createElement('img');
+          img.src = video.thumbnail;
+          img.alt = video.title;
+          img.className = 'video-thumbnail';
+
+          const title = document.createElement('h2');
+          title.textContent = video.title;
+          title.className = 'video-title';
+
+          videoContainer.appendChild(title);
+          videoContainer.appendChild(img);
+          playlistContainer.appendChild(videoContainer);
+        }
+      });
+    });
+    </script>
+     
 </body>
 </html>

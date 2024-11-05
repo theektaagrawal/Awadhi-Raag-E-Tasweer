@@ -44,7 +44,7 @@ a {
     color: #ffffff;
     text-align: center;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: "Ek Mukta";
+    font-family: "Mukta";
     font-size: 40px;
     font-style: normal;
     font-weight: 600;
@@ -68,4 +68,6 @@ a {
     position: absolute;
     top: 666px;
     left: 227px;
+    opacity: 0.5; /* Reduces opacity to give a "disabled" look */
+    cursor: not-allowed; /* Changes cursor to indicate it's non-clickable */
 }

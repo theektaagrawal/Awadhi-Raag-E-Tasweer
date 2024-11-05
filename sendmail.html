@@ -14,12 +14,20 @@
             </svg>
         </a>
         <div>
-        <a href="done.html">
-        <img src="./assets/loading.gif" id="loading_gif" alt="Loading">
-        </a>
+        <img src="./assets/loading.gif" onclick="sendMail()" id="loading_gif" alt="Loading">
         </div>
     </div>
     <script>  
+
+function sendMail() {
+            alert("Mail sent!");
+            setTimeout(() => {
+                window.location.href = "done.html"; 
+            }, 500); 
+        }
+
+
+
     </script> 
 </body>
 </html>

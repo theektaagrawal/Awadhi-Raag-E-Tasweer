@@ -18,7 +18,7 @@
             background: url('./assets/Feedback.png') no-repeat center center;
             background-color: #1E2D63;
             background-size: cover;
-            font-family: "Ek Mukta";
+            font-family: "Mukta";
             width: 834px;
             height: 1194px;
             position: relative;
@@ -90,11 +90,11 @@
             width: 300px;
             border: none;
             border-radius: 40px;
-            background-color: rgba(255, 255, 255, 0.73);
+            background-color: rgb(255, 255, 255);
             cursor: pointer;
             color: #273774;
             text-align: center;
-            font-family: "Ek Mukta", sans-serif;
+            font-family: "Mukta";
             font-size: 30px;
             font-weight: 600;
         }
@@ -144,10 +144,8 @@
         <img src="assets/heart1.png" alt="Heart Button" class="heart-button inactive">
     </div>
 
-    <button class="done-btn">
-    <a href="photo.html">
+    <button id="loadbutton" class="done-btn">
         आगे बढ़ें →
-    </a>
     </button>
 
     <script>
@@ -163,7 +161,29 @@
                 heartImg.classList.add('inactive');
             }
         }
+
+        // ON BUTTON CLICK:
+        document.getElementById('loadbutton').addEventListener('click', function() {
+            
+            // Retrieve Existing Constants from Local Storage
+        const UserName = localStorage.getItem('userName');
+        const HeartStatus = JSON.parse(localStorage.getItem('heartStatus'));
+
+        const userUrl = `${window.location.origin}/awadhiplaylist.html?UserName=${encodeURIComponent(UserName)}&HeartStatus=${encodeURIComponent(JSON.stringify(HeartStatus))}`;
+
+        // Save the constructed URL in local storage
+        localStorage.setItem('userUrl', userUrl.toString());
+
+        
+
+        //Redirect to User URL on Button Click
+        window.location.href = "photoask.html";
+
+
+        });
+
     </script>
     <script src="script.js"></script>
+    
 </body>
 </html>

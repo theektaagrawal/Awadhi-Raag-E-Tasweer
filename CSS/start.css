@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body {
-    font-family: "Ek Mukta";
+    font-family: "Mukta";
     width: 834px;
     height: 1194px;
     position: relative;
@@ -74,13 +74,13 @@ button {
     height: 65px;
     border: none;
     border-radius: 40px;
-    background-color: rgba(255, 255, 255, 0.73);
+    background-color: rgb(255, 255, 255);
     cursor: not-allowed;
     opacity: 0.5;
     transition: background-color 0.3s ease, opacity 0.3s ease;
     color: #273774;
     text-align: center;
-    font-family: "Ek Mukta";
+    font-family: "Mukta";
     font-size: 32px;
     font-weight: 600;
     justify-content: center;

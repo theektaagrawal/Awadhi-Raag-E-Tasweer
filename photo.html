@@ -8,54 +8,164 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Poppins:wght@400;700&display=swap');
     </style>
+    <!-- Include html2canvas library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
    
-    <a href="feedplaylist.html">
+    <a href="photoask.html">
         <img src="assets/back.png" alt="Back Button" class="back-button">
     </a>    
-
 
     <div class="photoheading">
         <img id="photoheading" src="./assets/hh5.png" class="photo">
     </div>
-
   
     <a href="index.html">
         <img src="assets/homebutton.png" alt="Home Button" class="home-button">
     </a>
 
-    <div id="photoframe" class="hidden">
-        <img src="./assets/photoframe.png" alt="Frame" class="photo-frame">
-        <div id="camera-frame" class="camera-container hidden">
-            <video id="webcam" autoplay playsinline class="hidden"></video>
-            <img id="captured-photo" class="hidden" alt="Captured Photo">
+    <div id="photoframe">
+        <img src="./assets/photoframe.png" alt="Frame">
+        <div id="camera-frame" class="camera-container">
+            <video id="webcam" autoplay playsinline></video>
+            <img id="captured-photo" alt="Captured Photo" class="hidden">
+            <p id="countdown" class="hidden"> </p>
+            <img id="overlay-photo" src="./assets/overlay.png" alt="Overlay Text">
+            <img id="qr-code" alt="User QR Code">
         </div>
     </div>
 
- 
-    <button id="camera-button" class="hidden">
+    <button id="camera-button">
         <img src="./assets/cameralogo.png" alt="Camera Button">
-        <h1 id="clickins"> क्लिक </h1>
     </button>
-
 
     <div id="clickcomd">  
+        <button id="redo-button" class="hidden">
+            <img src="./assets/redo.png" alt="Redo Button">
+        </button>
 
-    <button id="redo-button" class="hidden">
-        <img src="./assets/redo.png" alt="Redo Button">
-    </button>
-
-    <button id="confirm-button" class="hidden">
-        <a href="option.html">
-        <img src="./assets/right.png" alt="Confirm Button">
-        </a>
-    </button>
-
+        <button id="confirm-button" class="hidden">
+            <a href="Awadhi.html">
+                <img src="./assets/right.png" alt="Confirm Button">
+            </a>
+        </button>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const webcam = document.getElementById('webcam');
+            const capturedPhoto = document.getElementById('captured-photo');
+            const cameraButton = document.getElementById('camera-button');
+            const redoButton = document.getElementById('redo-button');
+            const confirmButton = document.getElementById('confirm-button');
+            const countdownDisplay = document.getElementById('countdown');
+            const qrCodeImage = document.getElementById('qr-code');
+            const photoframe = document.getElementById('photoframe');
 
+            let webcamStream = null;
+            let countdownTimer = null;
 
+            // Display QR code if it exists in localStorage
+            const userQrCode = localStorage.getItem('userQr');
+            if (userQrCode) {
+                qrCodeImage.src = userQrCode;
+            }
+
+            // Open the webcam automatically if permission is granted
+            function openWebcam() {
+                navigator.mediaDevices.getUserMedia({ video: true })
+                    .then(stream => {
+                        webcamStream = stream;
+                        webcam.srcObject = stream;
+                    })
+                    .catch(error => {
+                        console.error('Webcam error:', error);
+                        alert('Unable to access the camera. Please grant permission.');
+                    });
+            }
+            openWebcam();  // Open the camera on page load
+
+            // Countdown function
+            function startCountdown(callback) {
+                let count = 3;
+                countdownDisplay.textContent = count;
+                cameraButton.querySelector('img').src = './assets/recordbtn.png';
+                countdownDisplay.classList.remove('hidden');
+
+                countdownTimer = setInterval(() => {
+                    count -= 1;
+                    countdownDisplay.textContent = count;
+
+                    if (count === 0) {
+                        clearInterval(countdownTimer);
+                        countdownDisplay.classList.add('hidden'); // Hide countdown after reaching 0
+                        cameraButton.querySelector('img').src = './assets/cameralogo.png';
+                        callback();
+                    }
+                }, 1000);
+            }
+
+            // Capture photo on camera button click with countdown
+            cameraButton.addEventListener('click', () => {
+                startCountdown(capturePhoto);
+            });
+
+            // Function to capture the photo
+            function capturePhoto() {
+                const canvas = document.createElement('canvas');
+                canvas.width = webcam.videoWidth;
+                canvas.height = webcam.videoHeight;
+                const context = canvas.getContext('2d');
+                context.drawImage(webcam, 0, 0);
+
+                // Convert the captured image to a Data URL
+                const imageDataUrl = canvas.toDataURL('image/png');
+                localStorage.setItem('userImg', imageDataUrl);
+
+                // Show the captured photo
+                capturedPhoto.src = imageDataUrl;
+                capturedPhoto.classList.remove('hidden');
+                countdownDisplay.textContent = "";
+
+                // Hide the webcam and camera button, show redo and confirm buttons
+                webcam.classList.add('hidden');
+                cameraButton.classList.add('hidden');
+                redoButton.classList.remove('hidden');
+                confirmButton.classList.remove('hidden');
+            }
+
+            // Redo the photo by restarting the webcam
+            redoButton.addEventListener('click', () => {
+                capturedPhoto.classList.add('hidden');
+                webcam.classList.remove('hidden');
+                redoButton.classList.add('hidden');
+                confirmButton.classList.add('hidden');
+                cameraButton.classList.remove('hidden');
+                openWebcam();
+            });
+
+            // Confirm the photo, capture photoframe as image, and store in localStorage
+confirmButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (webcamStream) {
+        webcamStream.getTracks().forEach(track => track.stop());
+        webcamStream = null;
+    }
+    document.getElementById('camera-frame').classList.add('hidden');
+
+    // Capture the photoframe div and save as imgMail in localStorage
+    html2canvas(photoframe).then(canvas => {
+        const imgMail = canvas.toDataURL('image/png');
+        localStorage.setItem('imgMail', imgMail);
+        setTimeout(() => {
+            window.location.href = 'Awadhi.html';
+        }, 100); // 0.1 sec delay
+    });
+});
+
+        });
+
+    </script>
 </body>
 </html>

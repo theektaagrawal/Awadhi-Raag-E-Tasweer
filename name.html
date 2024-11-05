@@ -25,7 +25,26 @@
 
     </div>
 
-    <script src="script.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const nameInput = document.getElementById('nameInput');
+    const submitBtn = document.getElementById('submitBtn');
+
+    // Enable or disable the submit button based on input
+    nameInput.addEventListener('input', () => {
+        submitBtn.disabled = nameInput.value.trim() === '';
+    });
+
+    // Save the name to localStorage and redirect when the button is clicked
+    submitBtn.addEventListener('click', () => {
+        const userName = nameInput.value.trim();
+        if (userName) {
+            localStorage.setItem('userName', userName);
+            window.location.href = 'start.html';
+        }
+    });
+    });
+    </script>
     
 </body>
 

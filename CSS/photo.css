@@ -9,7 +9,7 @@
 body {
     background: url('./Blur.png') no-repeat center center;
     background-size: cover;
-    font-family: "Ek Mukta", sans-serif;
+    font-family: "Mukta";
     width: 834px;
     height: 1194px;
     display: flex;
@@ -47,23 +47,11 @@ body {
 }
 
 
-.photoheading-center {
-    transition: all 1s ease-in-out;  
-    position: relative;
-    transform: translateY(0); 
-}
-
-
-.photoheading-top {
+.photoheading {
     width: 644px;
     position: absolute;
     top: 128px;  
     left: 95px;
-}
-
-
-.photoheading-transition {
-    transform: translateY(-50px);  
 }
 
 
@@ -82,11 +70,11 @@ body {
 
 .camera-container {
     position: absolute;
-    top: 7.5%;
-    left: 7.5%;
+    top: 6%;
+    left: 7%;
     flex-shrink: 0;
-    width: 600px;
-    height: 600px;
+    width: 635px;
+    height: 635px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -99,17 +87,34 @@ body {
 }
 
 
-#clickins{
-    color: #FFF;
-    text-align: center;
-    text-shadow: 0px 3.565px 3.565px rgba(0, 0, 0, 0.25);
-    font-family: "Ek Mukta";
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    margin-top: 10px;
+#countdown {
+    position: absolute;
+    font-size: 9rem;
+    color: #ffffff;
+    top: 30%;
+    left: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
 }
+
+#overlay-photo{
+    position: absolute;
+    top: 70%; 
+    max-width: 640px;
+    z-index: 5;
+}
+
+#qr-code{
+    position: absolute;
+    top: 72.3%; 
+    left: 72.6%;
+    width: 160px;
+    height: 160px;
+    z-index: 5;
+}
+
 
 
 button {

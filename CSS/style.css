@@ -35,7 +35,7 @@ body {
 .subtitle {
     color: rgba(255, 255, 255, 0.51);
     text-align: center;
-    font-family: "Ek Mukta";
+    font-family: "Mukta";
     font-size: 32.064px;
     font-style: normal;
     font-weight: 400;
@@ -63,7 +63,7 @@ button {
     margin-top: 1px; 
     color: #273774;
     text-align: center;
-    font-family: "Ek Mukta";
+    font-family: "Mukta";
     font-size: 32px;
     font-style: normal;
     font-weight: 600;
