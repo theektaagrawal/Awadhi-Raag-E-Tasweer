@@ -68,6 +68,6 @@ a {
     position: absolute;
     top: 666px;
     left: 227px;
-    opacity: 0.5; /* Reduces opacity to give a "disabled" look */
+    opacity: 0.2; /* Reduces opacity to give a "disabled" look */
     cursor: not-allowed; /* Changes cursor to indicate it's non-clickable */
 }

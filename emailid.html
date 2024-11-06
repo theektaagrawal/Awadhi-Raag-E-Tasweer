@@ -28,36 +28,27 @@
         <button id="submitButton" disabled> ठीक है → </button>
 
     </div>
-
     <script>
-        //emailid.html javascript code
-document.addEventListener('DOMContentLoaded', () => {
-  const emailInput = document.getElementById('emailInput');
-  const submitButton = document.getElementById('submitButton');
+      document.addEventListener('DOMContentLoaded', () => {
+          const emailInput = document.getElementById('emailInput');
+          const submitButton = document.getElementById('submitButton');
 
-  // Email validation function using regex
-  function isValidEmail(email) {
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      return emailRegex.test(email);
-  }
+          function isValidEmail(email) {
+              const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+              return emailRegex.test(email);
+          }
 
-  // Enable or disable the submit button based on valid email input
-  emailInput.addEventListener('input', () => {
-      const email = emailInput.value.trim();
-      submitButton.disabled = !isValidEmail(email);
-  });
+          emailInput.addEventListener('input', () => {
+              const email = emailInput.value.trim();
+              submitButton.disabled = !isValidEmail(email);
+          });
 
-  // Save the email to localStorage and redirect when the button is clicked
-  submitButton.addEventListener('click', () => {
-      const userMail = emailInput.value.trim();
-      if (isValidEmail(userMail)) {
-          localStorage.setItem('userMail', userMail);
-          window.location.href = 'sendmail.html';
-      }
-  });
-});
-
-    </script>
-
+          submitButton.addEventListener('click', () => {
+              const userMail = emailInput.value.trim();
+              localStorage.setItem('userMail', userMail); // Store email in localStorage
+              window.location.href = 'sendmail.html'; // Redirect to sendmail.html
+          });
+      });
+  </script>
 </body>
 </html>

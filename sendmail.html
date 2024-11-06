@@ -18,16 +18,38 @@
         </div>
     </div>
     <script>  
+        document.addEventListener('DOMContentLoaded', () => {
+            const userMail = localStorage.getItem("userMail");
+            const imgMail = localStorage.getItem("imgMail");
 
-function sendMail() {
-            alert("Mail sent!");
-            setTimeout(() => {
-                window.location.href = "done.html"; 
-            }, 500); 
-        }
-
-
-
+            // Send email with userMail and imgMail
+            fetch("https://awadhi-2nd-project-server.vercel.app/send-email", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email: userMail, img: imgMail.slice(22) }),
+            })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.success) {
+                    alert("Email sent successfully!");
+                } else {
+                    alert("Failed to send email.");
+                }
+                // Redirect to done.html after 0.5 seconds
+                setTimeout(() => {
+                    window.location.href = "done.html";
+                }, 500); 
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+                alert("An error occurred. Please try again later.");
+                setTimeout(() => {
+                    window.location.href = "done.html";
+                }, 500);
+            });
+        });
     </script> 
 </body>
 </html>
