@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>अवधी राग-ए-तस्वीर</title>
+    <link rel="icon" type="image/png" href="./assets/favi.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: white;
+            display: grid;
+            place-items: center;
+            width: 100vw;
+        }
+
+        .container {
+            width: 834px;
+            height: 1194px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+
+        .title {
+            color: #273774;
+            text-align: center;
+            font-family: Gotu;
+            font-size: 70.836px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1.2; 
+            margin-bottom: 40px; 
+            margin-top: 100px;
+        }
+
+        #maincontent {
+            width: 500px;
+            height: 500px;
+            flex-shrink: 0;
+            margin-bottom: 40px; 
+        }
+
+        #facts {
+            width: 500px;
+            height: 200px;
+            flex-shrink: 0;
+            margin-bottom: 40px; 
+        }
+
+    </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">अवधी<br>राग-ए-तस्वीर</h1>
+    <img id="maincontent" alt="awadhi photo playlist">
+    <img src="./assets/facts.png" alt="Facts" id="facts">
+  </div> 
+ <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const photoPlaylist = document.getElementById('maincontent'); 
+
+        const contentImg = localStorage.getItem('imgMail');
+        if (contentImg) {
+            photoPlaylist.src = contentImg;
+        }
+    }
+    )
+    </script>
+</body>
+</html>

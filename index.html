@@ -11,7 +11,6 @@
       @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap');
       </style>
     <script>
-        // Clear heartStatus from localStorage at the start of a new session
         window.onload = function() {
             localStorage.removeItem('heartStatus');
             localStorage.removeItem('userImg');
@@ -20,6 +19,7 @@
             localStorage.removeItem('userUrl');
             localStorage.removeItem('userQr');
             localStorage.removeItem('imgMail');
+            localStorage.removeItem('printCopyCount');
         };
     </script>
 </head>

@@ -47,7 +47,7 @@ a {
     height: 66px;
     position: absolute;
     top: 403px;
-    left: 111px;
+    left: 108px;
     color: #ffffff;
     text-align: center;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -59,20 +59,64 @@ a {
     font-size: 38px;
 }
 
-#email-button{
-    background: transparent;
-    border: none;
+#counter {
+    width: 233px;
+    height: 137.41px;
     flex-shrink: 0;
-    position: absolute;
-    top: 535px;
-    left: 227px;
 }
+
+#count-input {
+    position: absolute;
+    top: 515px;
+    left: 316px;
+    width: 153.342px;
+    height: 137.41px;
+    flex-shrink: 0;
+    text-align: center;
+    border-radius: 7.966px;
+    border: 1.991px solid #000;
+    background: #FFF;
+    color: #000;
+    text-align: center;
+    font-family: Inter;
+    font-size: 55.335px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+#decrement{
+    position: absolute;
+    top: 587px;
+    left: 483px;
+    width: 65.718px;
+    height: 65.718px;
+    flex-shrink: 0;
+    border: none;
+    background-color: transparent;
+}
+
+#increment{
+    position: absolute;
+    top: 515px;
+    left: 483px;
+    width: 65.718px;
+    height: 65.718px;
+    flex-shrink: 0;
+    border: none;
+    background-color: transparent;
+}
+
+.counter button:disabled {
+    cursor: not-allowed;
+}
+
 
 #print-button{
     background: transparent;
     border: none;
     flex-shrink: 0;
     position: absolute;
-    top: 666px;
+    top: 739px;
     left: 227px;
 }

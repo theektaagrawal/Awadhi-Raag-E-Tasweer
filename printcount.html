@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>अवधी राग-ए-तस्वीर</title>
+    <link rel="stylesheet" href="./CSS/printcount.css">
+    <link rel="icon" type="image/png" href="./assets/favi.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Poppins:wght@400;700&display=swap');
+    </style>
+</head>
+<body>
+
+    <div class="container">
+   
+    <a href="option.html">
+        <img src="assets/back.png" alt="Back Button" class="back-button">
+    </a>    
+    <img src="assets/hh6.png" alt="heading" class="heading">
+    <a href="index.html">
+        <img src="assets/homebutton.png" alt="Home Button" class="home-button">
+    </a>
+
+    <div id="counter">
+            <input type="number" id="count-input" value="1" readonly />
+            <button id="increment"><img src="./assets/increasebtn.png" alt="+"></button>
+            <button id="decrement" disabled><img src="./assets/decreasebtn.png" alt="-"></button>
+    </div>  
+
+
+
+    <button id="print-button" >
+        <a href="printsend.html">
+        <img src="./assets/printbutton.png" alt="Print Button">
+        </a>
+    </button>
+
+    </div>
+    </div>
+
+    <script>
+        // DOM elements
+        const countInput = document.getElementById("count-input");
+        const incrementBtn = document.getElementById("increment");
+        const decrementBtn = document.getElementById("decrement");
+        const printButton = document.getElementById("print-button");
+
+        // Initialize localStorage variable
+        let printCopyCount = localStorage.getItem("printcopycount") || 1;
+        countInput.value = printCopyCount;
+
+        // Update localStorage whenever the value changes
+        const updateLocalStorage = () => {
+            localStorage.setItem("printcopycount", countInput.value);
+        };
+
+        // Increment the count
+        incrementBtn.addEventListener("click", () => {
+            let count = parseInt(countInput.value);
+            count += 1;
+            countInput.value = count;
+            decrementBtn.disabled = false; // Enable decrement button
+            updateLocalStorage();
+        });
+
+        // Decrement the count
+        decrementBtn.addEventListener("click", () => {
+            let count = parseInt(countInput.value);
+            if (count > 1) {
+                count -= 1;
+                countInput.value = count;
+                updateLocalStorage();
+            }
+            if (count === 1) {
+                decrementBtn.disabled = true; // Disable decrement button
+            }
+        });
+
+        // Save count on print button click
+        printButton.addEventListener("click", () => {
+            updateLocalStorage();
+        });
+    </script>
+
+</body>
+</html>
+
+

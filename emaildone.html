@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>अवधी राग-ए-तस्वीर</title>
-    <link rel="stylesheet" href="./CSS/sendmail.css">
+    <link rel="stylesheet" href="./CSS/emaildone.css">
     <link rel="icon" type="image/png" href="./assets/favi.png">
 </head>
 <body>
@@ -15,43 +15,19 @@
             </svg>
         </a>
         <div>
-        <img src="./assets/loading.gif" id="loading_gif" alt="Loading">
+        <button id="finish-button">
+            <a href="index.html">
+                <img src="./assets/finishbutton.png" alt="Finish Button">
+            </a>
+        </button>
+        <button id="print-button" >
+            <a href="printcount.html">
+            <img src="./assets/printbtn.png" alt="Print Button">
+            </a>
+        </button>
         </div>
     </div>
     <script>  
-        document.addEventListener('DOMContentLoaded', () => {
-            const userUrl = localStorage.getItem("userUrl");
-            const userMail = localStorage.getItem("userMail");
-            const imgMail = localStorage.getItem("imgMail");
-
-            // Send email with userMail and imgMail
-            fetch("https://awadhi-2nd-project-server.vercel.app/send-email", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ email: userMail, img: imgMail.slice(22), userUrl }),
-            })
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.success) {
-                    alert("Email sent successfully!");
-                } else {
-                    alert("Failed to send email.");
-                }
-                // Redirect to done.html after 0.5 seconds
-                setTimeout(() => {
-                    window.location.href = "emaildone.html";
-                }, 500); 
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-                alert("An error occurred. Please try again later.");
-                setTimeout(() => {
-                    window.location.href = "emaildone.html";
-                }, 500);
-            });
-        });
     </script> 
 </body>
 </html>

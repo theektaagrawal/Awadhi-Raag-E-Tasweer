@@ -15,7 +15,7 @@ body {
 .container {
     width: 834px;
     height: 1194px;
-    background-image: url('fb1.png');
+    background-image: url('printingdone.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -31,13 +31,25 @@ body {
     height: 60px;
 }
 
-#loading_gif{
-    width: 150px;
-    height: 150px;
+#finish-button{
+    width: 380.8px;
+    height: 91px;
     flex-shrink: 0;
     position: absolute;
-    top: 394px;
-    left: 320px;
-    mix-blend-mode: multiply;    
+    top: 506px;
+    left: 227px;
+    background: transparent;
+    border: none;
+}
+
+#email-button{
+    width: 263px;
+    height: 62.849px;
+    flex-shrink: 0;
+    position: absolute;
+    top: 645px;
+    left: 285px;
+    background: transparent;
+    border: none;
 }
 

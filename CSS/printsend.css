@@ -15,7 +15,7 @@ body {
 .container {
     width: 834px;
     height: 1194px;
-    background-image: url('fb1.png');
+    background-image: url('sendprintout.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -31,13 +31,13 @@ body {
     height: 60px;
 }
 
+
 #loading_gif{
     width: 150px;
     height: 150px;
     flex-shrink: 0;
     position: absolute;
-    top: 394px;
-    left: 320px;
+    top: 242px;
+    left: 338px;
     mix-blend-mode: multiply;    
 }
-

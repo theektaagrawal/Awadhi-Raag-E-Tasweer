@@ -31,25 +31,6 @@ body {
     height: 60px;
 }
 
-#heading {
-    position: absolute;
-    top: 173px;
-    left: 126px;
-}
-
-#sendingmail{
-    display: flex;
-    width: 678.93px;
-    height: 486.924px;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    position: absolute;
-    top: 338px;
-    left: 124px;
-    mix-blend-mode: multiply;
-}
-
 #finish-button{
     width: 380.8px;
     height: 91px;
@@ -70,7 +51,5 @@ body {
     left: 285px;
     background: transparent;
     border: none;
-    opacity: 0.5; /* Reduces opacity to give a "disabled" look */
-    cursor: not-allowed; /* Changes cursor to indicate it's non-clickable */
 }
 
