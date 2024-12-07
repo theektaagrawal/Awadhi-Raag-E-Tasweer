@@ -1,8 +1,14 @@
-body, html {
+html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Mukta";
+}
+body {
+    background-color: #273774;
+    display: grid;
+    place-items: center;
+    width: 100vw;
 }
 
 .container {

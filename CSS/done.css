@@ -1,8 +1,15 @@
-body {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Mukta";
+}
+
+body {
+    background-color: #facf8e;
+    display: grid;
+    place-items: center;
+    width: 100vw;
 }
 
 .container {

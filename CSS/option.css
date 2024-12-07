@@ -5,6 +5,13 @@
 }
 
 body {
+    background-color: #273774;
+    display: grid;
+    place-items: center;
+    width: 100vw;
+}
+
+.container {
     background: url('./homescreen.png') no-repeat center center;
     background-size: cover;
     position: relative;

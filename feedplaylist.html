@@ -16,6 +16,13 @@
         }
 
         body {
+            background-color: #273774;
+            display: grid;
+            place-items: center;
+            width: 100vw;
+        }
+
+        .container {
             background: url('./assets/Feedback.png') no-repeat center center;
             background-color: #1E2D63;
             background-size: cover;
@@ -107,6 +114,8 @@
     </style>
 </head>
 <body>
+
+    <div class="container">
     <a href="carousel.html">
         <img src="assets/back.png" alt="Back Button" class="back-button">
     </a>    
@@ -148,6 +157,8 @@
     <button id="loadbutton" class="done-btn">
         आगे बढ़ें →
     </button>
+
+    </div>
 
     <script>
         function toggleHeart(heartContainer) {

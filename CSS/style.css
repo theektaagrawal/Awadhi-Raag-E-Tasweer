@@ -7,13 +7,17 @@
 
 
 body {
-    width: 834px;
-    height: 1194px;
-    background: url(./homescreen.png) lightgray 50% / cover no-repeat;
+    background-color: #273774;
+    display: grid;
+    place-items: center;
+    width: 100vw;
 }
 
 
 .container {
+    background: url(./homescreen.png) lightgray 50% / cover no-repeat;
+    width: 834px;
+    height: 1194px;
     display: flex;
     flex-direction: column;
     align-items: center;

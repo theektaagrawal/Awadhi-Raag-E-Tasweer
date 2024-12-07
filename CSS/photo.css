@@ -5,8 +5,14 @@
     box-sizing: border-box;
 }
 
-
 body {
+    background-color: #273774;
+    display: grid;
+    place-items: center;
+    width: 100vw;
+}
+
+.container {
     background: url('./Blur.png') no-repeat center center;
     background-size: cover;
     font-family: "Mukta";
